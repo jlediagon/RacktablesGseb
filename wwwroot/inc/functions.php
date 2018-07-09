@@ -1209,7 +1209,7 @@ function testPatchPanel($dataRack)
 			'<td class=tdleft>vers baie...</td>'.
 			'<td class=tdleft>Ports Restant : nbr / '.$port_tot.'</td></tr>';	
 		//echo '<p><strong><a href ="index.php?page=object&object_id='.$id.'">'.$res[0]['name'].'</a></strong></p>';
-		//print_r($neyme);
+		print_r($neyme);
 		}
 	}
 	echo "</table>\n";
@@ -1246,11 +1246,11 @@ function listPortObj ($obj_id)
 			{
 				$counter++;
 			}	
-		}
-		echo '<br>';
-		echo 'Le nombre est de '.$counter.'';
-		echo '</br>';*/
-return $counter ;
+		}*/
+		//echo '<br>';
+		//echo 'Le nombre est de '.$nbrport.'';
+		//echo '</br>';
+return $nbrport ;
 }	
 //////////////////////////////////////////////////////////////////////
 /*     Nouvelle Fonction permettant la coloration des U réservés    */
