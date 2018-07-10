@@ -27,13 +27,14 @@ function testPatchPanel($dataRack)
 		{
 		$port_tot = listPortObj($id);
 		$port_used = listPortObj_used($id);
-		$PatchPdist = distPatchPanel($id);	
+        $PatchPdist = distPatchPanel($id,0);
+        $IdPatchPdist = distPatchPanel($id,1);
 		echo '<tr>'.
 			'<th width='.'50%'.'class=tdleft>'.
 				'<a href =index.php?page=object&object_id='.$id.'>'.$res[0]['name'].'</a>'.
 			'</th>'.
 			'<td class=tdleft>'.	
-				'<strong><a href =index.php?page=object&object_id='.$id.'>'.$PatchPdist.'</a></strong>'.
+				'<strong><a href =index.php?page=object&object_id='.$IdPatchPdist.'>'.$PatchPdist.'</a></strong>'.
 			'</td>'.
 			'<td class=tdleft>'.$port_used.' / '.$port_tot.'</td></tr>';	
 		//echo '<p><strong><a href ="index.php?page=object&object_id='.$id.'">'.$res[0]['name'].'</a></strong></p>';
@@ -74,7 +75,7 @@ function listPortObj ($obj_id)
 //////////////////////////////////////////////////////////////////////
 /*     Nouvelle Fonction permettant de déterminer le nom du 	    */
 /*     PatchPanel distant 				 	    */
-function distPatchPanel ($obj_id)
+function distPatchPanel ($obj_id,$obj_id_dist)
 {
 	$req=usePreparedSelectBlade
 	(
@@ -88,29 +89,37 @@ function distPatchPanel ($obj_id)
 	
 	if($res[0]['porta'] == $res[0]['id']){
 		if (isset($res[0]['portb'])){
+            
 			$req=usePreparedSelectBlade
 			(
-			   'SELECT o.name '. 
+			   'SELECT o.name, o.id '. 
 			   'FROM Object o '.
 			   'JOIN Port p ON o.id=p.object_id '.
 			   'WHERE p.id='.$res[0]['portb'].';'
 		   	);
 		   
-		   	$res2 = $req->fetchAll();
-		   	return $res2[0]['name'];
+            $res2 = $req->fetchAll();
+            if($obj_id_dist == 1)
+                return $res2[0]['id'];
+		    return $res2[0]['name'];
 		}
 	}else if ($res[0]['portb'] == $res[0]['id']){
 		if (isset ($res[0]['porta'])){
+            if($obj_id_dist == 1)
+            {
+                return $res[0]['porta'];
+            }
 			$req=usePreparedSelectBlade
 			(
-			   'SELECT o.name '. 
+			   'SELECT o.name, o.id '. 
 			   'FROM Object o '.
 			   'JOIN Port p ON o.id=p.object_id '.
 			   'WHERE p.id='.$res[0]['porta'].';'
 			);
-			   
 			$res2 = $req->fetchAll();
-			return $res2[0]['name'];
+            if($obj_id_dist == 1)
+                return $res2[0]['id'];
+            return $res2[0]['name'];
 		}
 	}
 }
