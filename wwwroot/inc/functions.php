@@ -1185,9 +1185,10 @@ function getRSUforRow ($rowData,$espac)
 			break;	
 	}
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////
 /*     Fonction permettant l'affichage des ports restant des PatchPanel pour une baie  */
-function testPatchPanel($dataRack)
+/*function testPatchPanel($dataRack)
 {
 	echo "<table border=0 cellspacing=0 cellpadding=3 width='100%'>\n";
 	echo "<table border=0 cellspacing=0 cellpadding=3 width='100%'>\n";
@@ -1257,7 +1258,7 @@ function listPortObj ($obj_id)
 //////////////////////////////////////////////////////////////////////
 /*     Nouvelle Fonction permettant de déterminer le nom du 	    */
 /*     PatchPanel distant 				 	    */
-function distPatchPanel ($obj_id)
+/*function distPatchPanel ($obj_id)
 {
 	$req=usePreparedSelectBlade
 	(
@@ -1296,10 +1297,10 @@ function distPatchPanel ($obj_id)
 			return $res2[0]['name'];
 		}
 	}
-}
+}*/
 //////////////////////////////////////////////////////////////////////
 /*     Nouvelle Fonction permettant la coloration des U réservés    */
-function reservedColor ($id_obj)
+/*function reservedColor ($id_obj)
 {
 	if (isset($id_obj))
 	{
@@ -1378,6 +1379,7 @@ function getUbusyforRow($list_rack, $id_row)
 	}
 	return $counter;
 }
+*/
 function string_insert_hrefs_callback ($m)
 {
 	$t_url_href    = 'href="' . rtrim($m[1], '.') . '"';
