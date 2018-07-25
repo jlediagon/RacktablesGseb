@@ -105,10 +105,6 @@ function distPatchPanel ($obj_id,$obj_id_dist)
 		}
 	}else if ($res[0]['portb'] == $res[0]['id']){
 		if (isset ($res[0]['porta'])){
-            if($obj_id_dist == 1)
-            {
-                return $res[0]['porta'];
-            }
 			$req=usePreparedSelectBlade
 			(
 			   'SELECT o.name, o.id '. 
